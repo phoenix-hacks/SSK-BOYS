@@ -1,0 +1,98 @@
+{
+  "albums": [
+    {
+      "id": 1,
+      "title": "Letters Bride",
+      "cover": "thumbnails/Lettersbride.jpg",
+      "tracks": [
+        {
+          "id": 101,
+          "title": "Track 1",
+          "file_path": "letters_brides/letters_of_two_brides_01_debalzac_64kb.mp3"
+        },
+        {
+          "id": 102,
+          "title": "Track 2",
+          "file_path": "letters_brides/letters_of_two_brides_02_debalzac_64kb.mp3"
+        },
+        {
+          "id": 103,
+          "title": "Track 3",
+          "file_path": "letters_brides/letters_of_two_brides_03_debalzac_64kb.mp3"
+        },
+        {
+          "id": 104,
+          "title": "Track 4",
+          "file_path": "letters_brides/letters_of_two_brides_04_debalzac_64kb.mp3"
+        },
+        {
+          "id": 105,
+          "title": "Track 5",
+          "file_path": "letters_brides/letters_of_two_brides_05_debalzac_64kb.mp3"
+        },
+        {
+          "id": 106,
+          "title": "Track 6",
+          "file_path": "letters_brides/letters_of_two_brides_06_debalzac_64kb.mp3"
+        },
+        {
+          "id": 107,
+          "title": "Track 7",
+          "file_path": "letters_brides/letters_of_two_brides_07_debalzac_64kb.mp3"
+        },
+        {
+          "id": 108,
+          "title": "Track 8",
+          "file_path": "letters_brides/letters_of_two_brides_08_debalzac_64kb.mp3"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Letters Bride",
+      "cover": "thumbnails/Lettersbride.jpg",
+      "tracks": [
+        {
+          "id": 201,
+          "title": "Track 1",
+          "file_path": "letters_brides/letters_of_two_brides_01_debalzac_64kb.mp3"
+        },
+        {
+          "id": 202,
+          "title": "Track 2",
+          "file_path": "letters_brides/letters_of_two_brides_02_debalzac_64kb.mp3"
+        },
+        {
+          "id": 203,
+          "title": "Track 3",
+          "file_path": "letters_brides/letters_of_two_brides_03_debalzac_64kb.mp3"
+        },
+        {
+          "id": 204,
+          "title": "Track 4",
+          "file_path": "letters_brides/letters_of_two_brides_04_debalzac_64kb.mp3"
+        },
+        {
+          "id": 205,
+          "title": "Track 5",
+          "file_path": "letters_brides/letters_of_two_brides_05_debalzac_64kb.mp3"
+        },
+        {
+          "id": 206,
+          "title": "Track 6",
+          "file_path": "letters_brides/letters_of_two_brides_06_debalzac_64kb.mp3"
+        },
+        {
+          "id": 207,
+          "title": "Track 7",
+          "file_path": "letters_brides/letters_of_two_brides_07_debalzac_64kb.mp3"
+        },
+        {
+          "id": 208,
+          "title": "Track 8",
+          "file_path": "letters_brides/letters_of_two_brides_08_debalzac_64kb.mp3"
+        }
+      ]
+    }
+  ]
+}
