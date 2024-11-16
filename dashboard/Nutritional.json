@@ -1,0 +1,23 @@
+[
+  {
+    "Meal": "Oatmeal with fruits",
+    "Calories": 300,
+    "Protein": 10,
+    "Carbs": 50,
+    "Fats": 10
+  },
+  {
+    "Meal": "Grilled chicken salad",
+    "Calories": 450,
+    "Protein": 40,
+    "Carbs": 20,
+    "Fats": 25
+  },
+  {
+    "Meal": "Salmon with steamed vegetables",
+    "Calories": 500,
+    "Protein": 35,
+    "Carbs": 30,
+    "Fats": 30
+  }
+]

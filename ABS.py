@@ -1,24 +1,21 @@
 import streamlit as st
 import json
 import os
+st.set_page_config(page_title="Maternal Nutritional Planner", page_icon="🍎", layout="wide")
 
 
 def load_json():
     with open("Database/audiobooks/data.json", "r") as f:
         return json.load(f)
 
-
 def file_exists(filepath):
     return os.path.exists(filepath)
-
 
 def load_audio_file(file_path):
     with open(file_path, "rb") as audio_file:
         return audio_file.read()
 
-
 data = load_json()
-
 
 if 'current_page' not in st.session_state:
     st.session_state.current_page = "home"
@@ -29,7 +26,6 @@ if 'playing_track_id' not in st.session_state:
     st.session_state.playing_track_id = None
 if 'audio_player' not in st.session_state:
     st.session_state.audio_player = None
-
 
 def display_home_page():
     st.title("Audiobooks Collection")

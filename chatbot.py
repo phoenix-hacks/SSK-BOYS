@@ -3,6 +3,7 @@ import requests
 import os
 from dotenv import load_dotenv
 import google.generativeai as genai
+st.set_page_config(page_title="Maternal Nutritional Planner", page_icon="🍎", layout="wide")
 
 load_dotenv() 
 

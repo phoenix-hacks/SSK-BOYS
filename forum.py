@@ -2,6 +2,7 @@ import streamlit as st
 from datetime import datetime
 import json
 import os
+st.set_page_config(page_title="Maternal Nutritional Planner", page_icon="🍎", layout="wide")
 
 DATA_FILE = "forum_data.json"
 
