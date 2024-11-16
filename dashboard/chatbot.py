@@ -3,7 +3,6 @@ import requests
 import os
 from dotenv import load_dotenv
 import google.generativeai as genai
-st.set_page_config(page_title="Maternal Nutritional Planner", page_icon="🍎", layout="wide")
 
 load_dotenv() 
 
@@ -45,15 +44,16 @@ def handle_input():
         st.session_state.messages.append({"role": "bot", "text": bot_response})
         st.session_state.user_input = ""
 
-st.title("Talk to Janma Mitra, our AI chatbot")
+def run():
+    st.title("Talk to Janma Mitra, our AI chatbot")
 
-for message in st.session_state.messages:
-    if message["role"] == "user":
-        st.write(f"**You:** {message['text']}")
-    else:
-        st.write(f"**Janma Mitra:** {message['text']}")
+    for message in st.session_state.messages:
+        if message["role"] == "user":
+            st.write(f"**You:** {message['text']}")
+        else:
+            st.write(f"**Janma Mitra:** {message['text']}")
 
-st.text_input("Type away:", key="user_input", on_change=handle_input)
+    st.text_input("Type away:", key="user_input", on_change=handle_input)
 
-if st.button("Reset Chat"):
-    st.session_state.messages = []
+    if st.button("Reset Chat"):
+        st.session_state.messages = []

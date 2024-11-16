@@ -1,7 +1,7 @@
 import streamlit as st
-import os
 import importlib
-from login import login
+
+st.set_page_config(page_title="MeternalEase", layout="wide")
 
 # Users dictionary for login
 users = {
@@ -14,65 +14,91 @@ users = {
 def check_login(username, password):
     return username in users and users[username] == password
 
-# Function to load the dashboard page dynamically
+# Function to load a page dynamically
 def load_dashboard_page(page_name):
     try:
         page_module = importlib.import_module(f"dashboard.{page_name}")
-        page_module.run()  # Ensure each module has a `run` function
+        if hasattr(page_module, 'run'):
+            page_module.run()
+        else:
+            st.error(f"The module '{page_name}' does not have a 'run()' function.")
     except ModuleNotFoundError:
-        st.error("Page not found.")
+        st.error(f"Page '{page_name}' not found.")
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
 
 # Main function to control page flow
 def main():
-    # Check if the user is logged in
     if "logged_in" not in st.session_state:
         st.session_state.logged_in = False
+    if "selected_page" not in st.session_state:
+        st.session_state.selected_page = None
 
     if st.session_state.logged_in:
-        # If logged in, automatically go to the dashboard page
         dashboard_page()
     else:
-        # Show login page if not logged in
         login_page()
 
 # Login page function
 def login_page():
-    st.title("Login Page")
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
-    
-    if st.button("Login"):
+    st.title("🔒 Login Page")
+
+    username = st.text_input("Username", key="username")
+    password = st.text_input("Password", type="password", key="password")
+
+    # Login button
+    if st.button("Login", key="login"):
         if check_login(username, password):
-            st.session_state.logged_in = True  # Mark the user as logged in
-            st.session_state.username = username  # Store the username
+            st.session_state.logged_in = True
+            st.session_state.username = username
+            st.session_state.selected_page = None
             st.success(f"Welcome, {username}!")
         else:
             st.error("Invalid credentials")
 
-# Dashboard page function
+# Dashboard page with left sidebar navigation (buttons)
 def dashboard_page():
-    st.title("Dashboard")
-    page_option = st.selectbox("Select a Dashboard Page", ["Appointments", "Calendar", "Nutritional Info"])
+    st.title("📊 Dashboard")
 
-    # Dynamically load the selected page
-    if page_option == "Appointments":
-        load_dashboard_page("appointments")
-    elif page_option == "Calendar":
-        load_dashboard_page("calendar")
-    elif page_option == "Nutritional Info":
-        load_dashboard_page("Nutritional")
+    # Sidebar navigation using buttons
+    st.sidebar.title("Navigation")
+    st.sidebar.markdown("### Select a page:")
 
-# Forum page function
-def forum_page():
-    st.title("Forum")
-    st.write("This is the forum page where users can interact.")
+    # Sidebar buttons (with full width using `use_container_width`)
+    if st.sidebar.button("Appointments", use_container_width=True):
+        st.session_state.selected_page = "appointments"
+    elif st.sidebar.button("Calendar", use_container_width=True):
+        st.session_state.selected_page = "calendar"
+    elif st.sidebar.button("Nutritional Info", use_container_width=True):
+        st.session_state.selected_page = "Nutritional"
+    elif st.sidebar.button("Forum", use_container_width=True):
+        st.session_state.selected_page = "forum"
+    elif st.sidebar.button("Chatbot", use_container_width=True):
+        st.session_state.selected_page = "chatbot"
+    elif st.sidebar.button("AudioBooks", use_container_width=True):
+        st.session_state.selected_page = "ABS"
+    elif st.sidebar.button("PreNet", use_container_width=True):
+        st.session_state.selected_page = "PreNet"
+    elif st.sidebar.button("PostNet", use_container_width=True):
+        st.session_state.selected_page = "postnatal"
 
-# Chatbot page function
-def chatbot_page():
-    st.title("Chatbot")
-    st.write("This is the chatbot page where users can interact with the chatbot.")
-    import chatbot
-    chatbot.run()  # Assuming you have a run() function in chatbot.py that handles interactions
+    # Load the selected page if a button was clicked
+    if st.session_state.selected_page:
+        load_dashboard_page(st.session_state.selected_page)
+
+    # Back button to return to dashboard
+    if st.button("Back to Dashboard"):
+        st.session_state.selected_page = None
+
+    # Add a logout button in the sidebar
+    if st.sidebar.button("Logout", key="logout", use_container_width=True):
+        logout()
+
+# Logout function
+def logout():
+    st.session_state.logged_in = False
+    st.session_state.selected_page = None
+    st.experimental_rerun()
 
 if __name__ == "__main__":
     main()

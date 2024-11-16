@@ -37,22 +37,23 @@ def schedule_notifications(events):
         trigger = DateTrigger(run_date=event["Date"])
         scheduler.add_job(notify, trigger=trigger, args=[event["Title"], event["Description"]])
 
-st.title("📅 Let's Keep You Up-To-Date")
+def run():
+    st.title("📅 Let's Keep You Up-To-Date")
 
-tab1, tab2 = st.tabs(["📋 View Events", "➕ Add Event"])
+    tab1, tab2 = st.tabs(["📋 View Events", "➕ Add Event"])
 
-with tab1:
-    st.header("Upcoming Events")
-    events = load_events()
+    with tab1:
+        st.header("Upcoming Events")
+        events = load_events()
 
-    if events.empty:
-        st.info("No upcoming events.")
-    else:
-        events["Date"] = pd.to_datetime(events["Date"])
-        events = events.sort_values(by="Date").reset_index(drop=True) 
+        if events.empty:
+            st.info("No upcoming events.")
+        else:
+            events["Date"] = pd.to_datetime(events["Date"])
+            events = events.sort_values(by="Date").reset_index(drop=True)
 
-        selected_date = st.date_input("Select a date to view events", min_value=events["Date"].min().date())
-        day_events = events[events["Date"].dt.date == selected_date]
+            selected_date = st.date_input("Select a date to view events", min_value=events["Date"].min().date())
+            day_events = events[events["Date"].dt.date == selected_date]
 
         if day_events.empty:
             st.info(f"No events on {selected_date}.")
@@ -65,21 +66,24 @@ with tab1:
                     st.success(f"Deleted event: {event['Title']}")
                     st.rerun()
 
-with tab2:
-    st.header("Add a New Event")
-    title = st.text_input("Event Title")
-    description = st.text_area("Event Description")
-    date = st.date_input("Event Date", min_value=datetime.now().date())
-    time = st.time_input("Event Time", value=datetime.now().time())
+    with tab2:
+        st.header("Add a New Event")
+        title = st.text_input("Event Title")
+        description = st.text_area("Event Description")
+        date = st.date_input("Event Date", min_value=datetime.now().date())
+        time = st.time_input("Event Time", value=datetime.now().time())
 
-    if st.button("Add Event"):
-        if title.strip() and description.strip():
-            event_datetime = datetime.combine(date, time)
-            add_event(title, description, event_datetime)
-            st.success(f"Event '{title}' added for {event_datetime}.")
-            st.rerun()
-        else:
-            st.error("Please fill in all fields.")
+        if st.button("Add Event"):
+            if title.strip() and description.strip():
+                event_datetime = datetime.combine(date, time)
+                add_event(title, description, event_datetime)
+                st.success(f"Event '{title}' added for {event_datetime}.")
+            else:
+                st.error("Please fill in all fields.")
 
-events = load_events()
-schedule_notifications(events)
+    # Scheduling notifications for all events
+    events = load_events()
+    schedule_notifications(events)
+
+if __name__ == "__main__":
+    run()
