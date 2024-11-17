@@ -93,6 +93,18 @@
           "file_path": "letters_brides/letters_of_two_brides_08_debalzac_64kb.mp3"
         }
       ]
+    },
+    {
+      "id": 3,
+      "title": "Letters Bride",
+      "cover": "thumbnails/Lettersbride.jpg",
+      "tracks": [
+        {
+          "id": 301,
+          "title": "Track 1",
+          "file_path": "letters_brides/letters_of_two_brides_01_debalzac_64kb.mp3"
+        }
+      ]
     }
   ]
 }

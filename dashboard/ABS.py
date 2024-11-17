@@ -45,8 +45,6 @@ def display_home_page():
                     st.session_state.current_page = "details"
         else:
             st.error(f"Cover not found for {album['title']}")
-        st.divider()  
-
 
 def display_album_details(album):
     st.title(album["title"])

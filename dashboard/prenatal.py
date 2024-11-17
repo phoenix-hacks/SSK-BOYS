@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 
 EVENTS_FILE = "seminars_events.csv"
 APPOINTMENTS_FILE = "appointments.csv"
@@ -49,7 +49,7 @@ def run():
         unsafe_allow_html=True,
     )
 
-    st.title("📚 Postnatal Care Resources")
+    st.title("📚 Prenatal Care Resources")
 
     col1, col2 = st.columns([3, 1]) 
     with col2:
@@ -58,16 +58,16 @@ def run():
             <div class="fixed-right">
                 <h2>📖 Educational Resources</h2>
                 <ul>
-                    <li><a href="https://www.who.int/">WHO Guidelines on Postnatal Care</a></li>
-                    <li><a href="https://www.cdc.gov/">CDC Postpartum Care Guide</a></li>
-                    <li><a href="https://www.nutrition.org/">Nutrition Tips for New Mothers</a></li>
-                    <li><a href="https://www.mentalhealth.gov/">Mental Health Resources for Postpartum Support</a></li>
+                    <li><a href="https://www.who.int/">WHO Guidelines on Prenatal Care</a></li>
+                    <li><a href="https://www.cdc.gov/">CDC Prenatal Care Guide</a></li>
+                    <li><a href="https://www.nutrition.org/">Nutrition Tips for Pregnant Women</a></li>
+                    <li><a href="https://www.mentalhealth.gov/">Mental Health Resources for Pregnant Women</a></li>
                 </ul>
             </div>
             """,
             unsafe_allow_html=True,
         )
-    
+
     with col1:
         st.markdown("---")
         tab1, tab2, tab3 = st.tabs(["🎉 Seminars and Events", "👩‍⚕️ Doctor Appointments", "💼 Government Schemes"])
@@ -120,12 +120,12 @@ def run():
 
             st.markdown(
                 """
-                <h3>📑 Government Schemes for Postnatal Care</h3>
+                <h3>📑 Government Schemes for Prenatal Care</h3>
                 <ul>
-                    <li><a href="https://wcdhry.gov.in/schemes-for-women/pradhan-mantri-matru-vandhana-yojna/">Pradhan Mantri Matru Vandhana Yojna</a> - Provides cash incentives to pregnant women</li>
-                    <li><a href="https://github.com/thomasbs17/streamlit-contributions/tree/master/bootstrap_carousel">Indira Gandhi Maternity Support Scheme (I.G.M.S.Y)</a> - Supports pregnant and lactating mothers for their first two live births</li>
-                    <li><a href="https://krishnagiri.nic.in/scheme/dr-muthulakshmi-maternity-benefit-scheme/">Dr. Muthulakshmi Maternity Benefit Scheme</a> - Financial assistance to poor pregnant mothers</li>
-                    <li><a href="https://www.nrhm.gov.in/index1.php?lang=1&level=3&sublinkid=1037&lid=318">Janani Suraksha Yojana (JSY)</a> - Safe motherhood intervention under the National Health Mission</li>
+                    <li><a href="https://www.india.gov.in/spotlight/mission-indradhanush">Mission Indradhanush</a> - Immunization program for pregnant women and children</li>
+                    <li><a href="https://www.pmindia.gov.in/en/overview/">Pradhan Mantri Surakshit Matritva Abhiyan (PMSMA)</a> - Ensuring regular health check-ups for expecting mothers</li>
+                    <li><a href="https://www.nhm.gov.in/index1.php?lang=1&level=3&sublinkid=1037&lid=308">Janani Suraksha Yojana (JSY)</a> - Financial assistance for safe deliveries</li>
+                    <li><a href="https://www.udyamimitra.in/">Udyami Mitra - Schemes for Women's Health</a> - Government schemes to support women's health initiatives</li>
                 </ul>
                 """,
                 unsafe_allow_html=True,

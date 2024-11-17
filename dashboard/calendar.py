@@ -71,7 +71,7 @@ def run():
         title = st.text_input("Event Title")
         description = st.text_area("Event Description")
         date = st.date_input("Event Date", min_value=datetime.now().date())
-        time = st.time_input("Event Time", value=datetime.now().time())
+        time = st.time_input("Event Time", value=datetime.strptime("09:00:00", "%H:%M:%S").time(), key="time")
 
         if st.button("Add Event"):
             if title.strip() and description.strip():
